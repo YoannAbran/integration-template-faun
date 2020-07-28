@@ -61,14 +61,16 @@
 </div>
 
 </div>
-<section  id="article" class="d-flex align-items-center justify-content-center">
-<div class="card-deck d-flex align-items-center justify-content-center ">
+<section  id="articles" class="d-flex container-fluid flex-column align-items-center justify-content-center ">
+  <h1 id="article" class="article font-weight-bold p-3">Articles</h1>
+<div class="card-deck container-fluid d-flex justify-content-around pt-5 ">
+
     <?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 
-    <div class="card col-3">
+    <div class="card pb-3 col-3">
     <!-- <img src="..." class="card-img-top" alt="..."> -->
     <div class="card-body ">
-      <h5 class="card-title"><?php the_title(); ?></h5>
+      <h5 id='article-title' class="card-title"><?php the_title(); ?></h5>
       <p class=" card-text content-text "><?php the_excerpt(); ?></p>
       <div class="card-text "><small class="text-muted"><?php the_time('j F Y à H:i'); ?></small></div>
       <p class="card-text"><a href="<?php the_permalink(); ?>" class="post__link text-dark">Lire la suite</a></p>

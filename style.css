@@ -110,15 +110,53 @@ body {
 
 }
 /*------ article ---------*/
-#article{
-  height: 60vh;
+#articles{
+  height:70vh;
+  background-image: url("img/smoke.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-#article .card{
-  height:40vh;
+#article {
+  color: #ed1f34;
+  font-size: 10rem;
+  opacity: 0.6;
+
+  line-height: 6rem;
 }
-#article p{
-  max-height:220px;
+#article-title {
+  color: #ed1f34;
+  font-size: 3rem;
+  opacity: 0.6;
+
+
 }
+#articles .card{
+  background-color:  #fefefe;
+
+}
+
+/*-------- single article--------*/
+#single{
+height: 100vh;
+background-image: url("img/faun_template_BG_TOP_Final.png");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+
+#single h1{
+  color: #ed1f34;
+  font-size: 8rem;
+  opacity: 0.6;
+
+
+}
+
+#single p{
+  font-size: 1.5rem;
+}
+
 
 /* ----- Section n°2 ----- */
 #section2 {
@@ -162,7 +200,7 @@ body {
   color: #999999;
   font-size: 25rem;
   opacity: 0.2;
-  margin-top: -5rem;
+  margin-top: -2rem;
   margin-bottom: -23rem;
   margin-right: -37rem;
   overflow: hidden;
