@@ -69,6 +69,7 @@
 <div class="col mb-4">
     <div class="card pb-3 ">
     <!-- <img src="..." class="card-img-top" alt="..."> -->
+    <?php the_post_thumbnail(); ?>
     <div class="card-body ">
       <h5 id='article-title' class="card-title"><?php the_title(); ?></h5>
       <p class=" card-text content-text "><?php the_excerpt(); ?></p>

@@ -11,7 +11,7 @@ function faun_register_assets(){
   wp_deregister_script('jquery');
   wp_register_script('jquery','https://code.jquery.com/jquery-3.4.1.slim.min.js',[],false,true);
   wp_enqueue_style('bootstrap');
-  wp_enqueue_style('main');
+  wp_enqueue_style('style');
   wp_enqueue_script('bootstrap');
 }
 function about_register_post_types() {
