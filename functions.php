@@ -14,8 +14,32 @@ function faun_register_assets(){
   wp_enqueue_style('main');
   wp_enqueue_script('bootstrap');
 }
+function about_register_post_types() {
+	// La déclaration de nos Custom Post Types et Taxonomies ira ici
+  $labels = array(
+        'name' => 'About',
+        // 'all_items' => 'Tous les projets',  // affiché dans le sous menu
+        'singular_name' => 'About',
+        // 'add_new_item' => 'Ajouter un projet',
+        'edit_item' => 'Modifier le About',
+        'menu_name' => 'About'
+    );
+
+	$args = array(
+        'labels' => $labels,
+        'public' => true,
+        // 'show_in_rest' => true,
+        // 'has_archive' => true,
+        'supports' => array( 'title', 'editor','thumbnail' ),
+        'menu_position' => 5,
+
+	);
+
+	register_post_type( 'about', $args );
+}
 
 
 
 add_action('after_setup_theme','faun_supports');
 add_action('wp_enqueue_script','faun_register_assets');
+add_action( 'init', 'about_register_post_types' );

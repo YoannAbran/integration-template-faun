@@ -13,7 +13,7 @@
       </button>
       <div class="dropdown-menu"  >
         <a class="dropdown-item" href="index.php#section1">Us</a>
-        <a class="dropdown-item" href="<?php echo get_bloginfo('template_directory'); ?>/single.php">Concerts</a>
+        <a class="dropdown-item" href="archive.php">Concerts</a>
         <a class="dropdown-item" href="index.php#section3">Videos</a>
         <a class="dropdown-item" href="index.php#section4">Contact</a>
       </div>
@@ -63,20 +63,20 @@
 </div>
 <section  id="articles" class="d-flex container-fluid flex-column align-items-center justify-content-center ">
   <h1 id="article" class="article font-weight-bold p-3">Articles</h1>
-<div class="card-deck container-fluid d-flex justify-content-around pt-5 ">
+<div class=" pt-5 card-deck  row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 ">
 
     <?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
-
-    <div class="card pb-3 col-3">
+<div class="col mb-4">
+    <div class="card pb-3 ">
     <!-- <img src="..." class="card-img-top" alt="..."> -->
     <div class="card-body ">
       <h5 id='article-title' class="card-title"><?php the_title(); ?></h5>
       <p class=" card-text content-text "><?php the_excerpt(); ?></p>
       <div class="card-text "><small class="text-muted"><?php the_time('j F Y à H:i'); ?></small></div>
-      <p class="card-text"><a href="<?php the_permalink(); ?>" class="post__link text-dark">Lire la suite</a></p>
+      <p class="card-text"><a href="<?php the_permalink(); ?>" class="post__link colorlink">Lire la suite</a></p>
     </div>
     </div>
-
+</div>
     <?php endwhile; endif; ?>
   </div>
 </section>
@@ -88,18 +88,25 @@
     <div class="container col col-md-6 col-sm-12 d-flex flex-column font-weight-bold text-uppercase">
 
       <div class="row">
-        <div class="container col col-md-12 col-sm-12 d-flex flex-column">
-        <div id="outUs">out us</div>
-        <div id="about" class="container-fluid ml-5">
-            <p id="aboutUs" class="d-flex">about us</p>
-            <p id="loremA">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <a href="noway.php" class="btn btn-outline-secondary font-weight-bold mb-5 "><span id="checkOur">check our tour</span></a>
-        </div>
 
-        </div>
+<div class="container col col-md-12 col-sm-12 d-flex flex-column">
+  <div id="outUs">out us</div>
+
+<?php
+  $about = new WP_Query(array('post_type' => 'About','showposts' => 1));
+  if( $about->have_posts() )  : while( $about->have_posts() ) : $about->the_post();
+ ?>
+
+  <div id="about" class="container-fluid ml-5">
+      <p id="aboutUs" class="d-flex"><?php the_title(); ?></p>
+      <p id="loremA"><?php the_excerpt(); ?></p>
+      <p><a href="<?php the_permalink(); ?>" class="post__link colorlink">Lire la suite</a></p>
+    </div>
+<?php endwhile; endif; ?>
+<?php wp_reset_postdata(); ?>
       </div>
     </div>
-
+</div>
     <div class="container col col-md-6 col-sm-12 d-flex flex-column justify-content-center align-items-center">
       <div id="abo" class="font-weight-bold text-uppercase">abo</div>
       <img src="<?php echo get_bloginfo('template_directory'); ?>/img/faun_template_Photo_ABOUTUS.png" alt="Photo Concert" class="img-fluid" id="imgConcert">

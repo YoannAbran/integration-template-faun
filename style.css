@@ -111,18 +111,16 @@ body {
 }
 /*------ article ---------*/
 #articles{
-  height:70vh;
+  min-height:70vh;
   background-image: url("img/smoke.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 #article {
-  color: #ed1f34;
-  font-size: 10rem;
+  color: #FF4457;
+  font-size: 8rem;
   opacity: 0.6;
-
-  line-height: 6rem;
 }
 #article-title {
   color: #ed1f34;
@@ -133,9 +131,11 @@ body {
 }
 #articles .card{
   background-color:  #fefefe;
-
 }
 
+.colorlink{
+  color: #ed1f34;
+}
 /*-------- single article--------*/
 #single{
 height: 100vh;
@@ -181,6 +181,7 @@ background-repeat: no-repeat;
 #aboutUs {
   font-size: 2.5rem;
   margin-bottom: 3rem;
+  color: #ed1f34;
 }
 
 #loremA {
