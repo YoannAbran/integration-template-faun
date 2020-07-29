@@ -37,9 +37,11 @@ function about_register_post_types() {
 
 	register_post_type( 'about', $args );
 }
+function remove_admin_bar_bump() {
+   remove_action( 'wp_head', '_admin_bar_bump_cb' );
+}
 
-
-
+add_action('get_header', 'remove_admin_bar_bump');
 add_action('after_setup_theme','faun_supports');
 add_action('wp_enqueue_script','faun_register_assets');
 add_action( 'init', 'about_register_post_types' );

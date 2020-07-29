@@ -3,7 +3,6 @@
 <div id="section1" class="h-100 container-fluid">
 
 <header class="container-fluid">
-
   <!-- Barre de navigation -->
   <nav class="navbar navbar-light bg-auto justify-content-around">
 

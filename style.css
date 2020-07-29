@@ -4,10 +4,12 @@ Theme Name: Faun
 
 :root {
 font-size: 6px;
+
 }
 
 html {
   scroll-behavior: smooth;
+  padding-top : 32px;
 }
 
 body {
