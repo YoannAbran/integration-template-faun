@@ -46,7 +46,7 @@
 
   <div class="row d-flex flex-column text-uppercase">
 
-    <h1 class="d-flex flex-column align-items-start pb-5 pt-5">
+    <h1 id="titlemusic" class="d-flex flex-column align-items-start pb-5 pt-5">
       <span id="safe">a safe kind</span><br>
       <span id="music" class="font-weight-bold">music is</span><br>
       <span id="high" class="font-weight-bold">of high</span>
@@ -60,7 +60,7 @@
 </div>
 
 </div>
-<section  id="articles" class="d-flex container-fluid flex-column align-items-center justify-content-center ">
+<div  id="articles" class="d-flex container-fluid flex-column align-items-center justify-content-center ">
   <h1 id="article" class="article font-weight-bold p-3">Articles</h1>
 <div class=" pt-5 card-deck  row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 ">
 
@@ -79,7 +79,7 @@
 </div>
     <?php endwhile; endif; ?>
   </div>
-</section>
+</div>
 <!-- Section 2 -->
 <div id="section2" class="container-fluid">
 
