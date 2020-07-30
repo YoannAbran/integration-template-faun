@@ -25,6 +25,7 @@ function adddropdown(){
     <label class="dropdown-item text-light"><input type="button" value="On" id="onoff10" onclick="onoff10();">bouncebot</label>
     <label class="dropdown-item text-light"><input type="button" value="On" id="onoff11" onclick="onoff11();">textflick</label>
     <label class="dropdown-item text-light"><input type="button" value="On" id="onoff12" onclick="onoff12();">textglow</label>
+    <label class="dropdown-item text-light"><input type="button" value="On" id="onoff13" onclick="onoff13();">textmove</label>
   </section>
 </section>
   ');
@@ -418,7 +419,111 @@ else {
 }
 </style>";
 }
-// root.style.filter = 'brightness(200%) contrast(120%) saturate(120%) hue-rotate(20deg) drop-shadow(30px 30px 40px yellow) invert(150%)';
+function offon13(){
+  echo"
+<script type='text/javascript'>
+function onoff13(){
+  root = document.documentElement;
+  currentvalue = document.getElementById('onoff13').value;
+  if (currentvalue == 'Off') {
+    document.getElementById('onoff13').value = 'On';
+    var mouse = {
+  	x: 0,
+  	y: 0,
+  }
+
+  var motions = [];
+  for (var i = 0; i < 5; i++){
+  	motions[i] = {
+  		xOffset: 0,
+  		yOffset: 0,
+  		xVel: 0,
+  		yVel: 0,
+  	}
+  }
+
+  var svgs;
+  var amnt = 60;
+  var skw = 20;
+  var rot = 40;
+  var stretch = -0.2;
+  var damp = 0.85;
+  var lag = 30;
+  var stretch = 10;
+
+  var mousefound = false;
+
+
+  function init(){
+  	document.addEventListener('mousemove', function(e){
+  		mouse.x = (e.clientX / window.innerWidth - 0.5) * 2;
+  		mouse.y = (e.clientY / window.innerHeight - 0.5) * 2;
+  		mousefound = true;
+  	})
+
+  	svg1 = document.getElementById('titlemusic');
+  	svg2 = document.getElementById('titlemusic');
+    svgs = [svg1,svg2]
+  	animate();
+  }
+
+  function animate(){
+  	if (!mousefound){
+  		mouse.x = Math.cos(Date.now()/300)/2;
+  		mouse.y = Math.sin(Date.now()/300)/2;
+  	}
+
+  	svgs.forEach(function(svg, i){
+
+  		var motion = motions[i];
+  		var ii = 4 - i;
+
+  		// calculate position
+  		var xDiff = mouse.x - motion.xOffset;
+  		var yDiff = mouse.y - motion.yOffset;
+  		motion.xVel += xDiff/(lag + ii*stretch);
+  		motion.yVel += yDiff/(lag + ii*stretch);
+  		motion.xVel *= damp + ii/220;
+  		motion.yVel *= damp + ii/220;
+  		motion.xOffset += motion.xVel;
+  		motion.yOffset += motion.yVel;
+
+
+  		// apply tranformation
+  		var tX = 'translateX('+(motion.xOffset * amnt - 50 - ii*xDiff*3)+'%) ';
+  		var tY = 'translateY('+(motion.yOffset * amnt - 50 - ii*yDiff*3)+'%) ';
+  		var rX = 'rotateY('+(xDiff * rot)+'deg) '
+  		var rY = 'rotateX('+(yDiff * rot)+'deg) '
+  		var sX = 'skewX('+(xDiff * skw)+'deg) '
+  		var sY = 'skewY('+(yDiff * skw)+'deg) '
+  		svg.style.transform = tX + tY + rX + rY + sX + sY;
+  	})
+
+  	requestAnimationFrame(animate);
+  }
+
+  init();
+  }
+else {
+  document.getElementById('onoff13').value = 'Off';
+
+}
+
+}
+</script>
+<style type='text/css'>
+
+#titlemusic{
+position : absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+
+}
+
+</style>";
+}
+
 
 add_action( 'init','adddropdown');
 add_action( 'wp_footer', 'offon1' );
@@ -433,3 +538,4 @@ add_action( 'wp_footer', 'offon9' );
 add_action( 'wp_footer', 'offon10' );
 add_action( 'wp_footer', 'offon11' );
 add_action( 'wp_footer', 'offon12' );
+add_action( 'wp_footer', 'offon13' );
